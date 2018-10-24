@@ -38,7 +38,7 @@ and here is the result:
 <img src="/screenshots/example.gif" width="250">
 
 ## Installation
-Just drag the StaticTableView.swift file into your project.
+Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files into your project.
 
 ## Things you can do now
 - Creating multiple sections with a header.

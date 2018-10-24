@@ -26,10 +26,12 @@ public class StaticCell: UITableViewCell {
 public class Section {
     public var cells: [StaticCell]
     public var headerTitle: String?
+    public var footerTitle: String?
     
-    public init(cells: [StaticCell], headerTitle: String?) {
+    public init(headerTitle: String? = nil, footerTitle: String? = nil, cells: [StaticCell]) {
         self.cells = cells
         self.headerTitle = headerTitle
+        self.footerTitle = footerTitle
     }
 }
 
@@ -41,7 +43,7 @@ public class StaticTableViewController: UITableViewController {
         }
     }
     
-    public init(sections: [Section], title: String) {
+    public init(title: String = "", sections: [Section]) {
         self.sections = sections
         super.init(style: .grouped)
         navigationItem.title = title
@@ -65,6 +67,10 @@ public class StaticTableViewController: UITableViewController {
     
     override public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].headerTitle
+    }
+    
+    public override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return sections[section].footerTitle
     }
     
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

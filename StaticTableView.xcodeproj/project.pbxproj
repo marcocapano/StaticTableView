@@ -32,6 +32,7 @@
 		4CAC8C872180E460009B4C48 /* StaticTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableViewTests.swift; sourceTree = "<group>"; };
 		4CAC8C892180E460009B4C48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CAC8C932180E475009B4C48 /* StaticTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableView.swift; sourceTree = "<group>"; };
+		4CAC8C962180EC93009B4C48 /* Test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Test.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 		4CAC8C7B2180E460009B4C48 /* StaticTableView */ = {
 			isa = PBXGroup;
 			children = (
+				4CAC8C962180EC93009B4C48 /* Test.playground */,
 				4CAC8C7C2180E460009B4C48 /* StaticTableView.h */,
 				4CAC8C7D2180E460009B4C48 /* Info.plist */,
 				4CAC8C932180E475009B4C48 /* StaticTableView.swift */,

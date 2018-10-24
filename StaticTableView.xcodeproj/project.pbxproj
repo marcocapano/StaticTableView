@@ -10,6 +10,8 @@
 		4CAC8C832180E460009B4C48 /* StaticTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAC8C792180E460009B4C48 /* StaticTableView.framework */; };
 		4CAC8C882180E460009B4C48 /* StaticTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC8C872180E460009B4C48 /* StaticTableViewTests.swift */; };
 		4CAC8C8A2180E460009B4C48 /* StaticTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAC8C7C2180E460009B4C48 /* StaticTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CAC8C942180E475009B4C48 /* StaticTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC8C932180E475009B4C48 /* StaticTableView.swift */; };
+		4CAC8C952180E475009B4C48 /* StaticTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC8C932180E475009B4C48 /* StaticTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,7 @@
 		4CAC8C822180E460009B4C48 /* StaticTableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaticTableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAC8C872180E460009B4C48 /* StaticTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableViewTests.swift; sourceTree = "<group>"; };
 		4CAC8C892180E460009B4C48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CAC8C932180E475009B4C48 /* StaticTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,7 @@
 			children = (
 				4CAC8C7C2180E460009B4C48 /* StaticTableView.h */,
 				4CAC8C7D2180E460009B4C48 /* Info.plist */,
+				4CAC8C932180E475009B4C48 /* StaticTableView.swift */,
 			);
 			path = StaticTableView;
 			sourceTree = "<group>";
@@ -148,6 +152,7 @@
 				TargetAttributes = {
 					4CAC8C782180E460009B4C48 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					4CAC8C812180E460009B4C48 = {
 						CreatedOnToolsVersion = 10.0;
@@ -194,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CAC8C942180E475009B4C48 /* StaticTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CAC8C882180E460009B4C48 /* StaticTableViewTests.swift in Sources */,
+				4CAC8C952180E475009B4C48 /* StaticTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +348,7 @@
 		4CAC8C8E2180E460009B4C48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +366,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrc.StaticTableView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +375,7 @@
 		4CAC8C8F2180E460009B4C48 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +401,7 @@
 		4CAC8C912180E460009B4C48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 345UEZ6M2K;
 				INFOPLIST_FILE = StaticTableViewTests/Info.plist;
@@ -409,6 +420,7 @@
 		4CAC8C922180E460009B4C48 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 345UEZ6M2K;
 				INFOPLIST_FILE = StaticTableViewTests/Info.plist;

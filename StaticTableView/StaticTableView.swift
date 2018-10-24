@@ -8,18 +8,21 @@
 
 import UIKit
 
+public typealias StaticCellSelectionBlock = (StaticCell, StaticTableViewController) -> ()
+public typealias StaticCellConfigurationBlock = (StaticCell) -> ()
+
 public class StaticCell: UITableViewCell {
-    public var didSelect: (() -> ())?
-    public var configure: ((StaticCell) -> ())
+    public var didSelect: StaticCellSelectionBlock?
+    public var configure: StaticCellConfigurationBlock
     
-    public init(style: UITableViewCell.CellStyle = .default, didSelect: (() -> ())? = nil, configure: @escaping ((StaticCell) -> ())) {
+    public init(style: UITableViewCell.CellStyle = .default, didSelect: StaticCellSelectionBlock? = nil, configure: @escaping StaticCellConfigurationBlock) {
         self.didSelect = didSelect
         self.configure = configure
         super.init(style: style, reuseIdentifier: nil)
     }
     
-    public convenience init(text: String, accessoryView: UIView? = nil) {
-        self.init(style: .default) {
+    public convenience init(text: String, accessoryView: UIView? = nil, whenSelected: StaticCellSelectionBlock? = nil) {
+        self.init(style: .default, didSelect: whenSelected) {
             $0.textLabel?.text = text
             $0.accessoryView = accessoryView
         }
@@ -88,6 +91,7 @@ public class StaticTableViewController: UITableViewController {
     }
     
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        cell(for: indexPath).didSelect?()
+        let cell = self.cell(for: indexPath)
+        cell.didSelect?(cell,self)
     }
 }

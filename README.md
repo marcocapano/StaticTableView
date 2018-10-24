@@ -36,7 +36,7 @@ Just drag the StaticTableView.swift file into your project.
 - Creating multiple cell for each section.
 - Configure your cells with the `configure` method.
 
-## Future planning:
+## Future plans:
 - Adding section footer support.
 - Adding didSelectCell support.
 - Adding convenience initializers for common types of cells.

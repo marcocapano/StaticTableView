@@ -18,9 +18,17 @@ public class StaticCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: nil)
     }
     
+    public convenience init(text: String, accessoryView: UIView? = nil) {
+        self.init(style: .default) {
+            $0.textLabel?.text = text
+            $0.accessoryView = accessoryView
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 public class Section {

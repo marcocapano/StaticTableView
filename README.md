@@ -5,28 +5,37 @@ A simple and declarative way of creating a static TableViewController.
 Creating a TableViewController is just as easy as:
 
 ``` swift
-let staticTableView = StaticTableViewController(sections: [
-    Section(cells: [
-        StaticCell(configure: {
-            $0.textLabel?.text = "marcocapano"
-        })
-        ], headerTitle: "Created by:"),
-    Section(cells: [
-        StaticCell(configure: {
-            $0.textLabel?.text = "Cell number 1"
-        }),
-        StaticCell(configure: {
-            $0.textLabel?.text = "Cell number 2"
-        })
-        ], headerTitle: "Some other cells:"),
-    ]
-    , title: "Static TableView")
+let staticTableView = StaticTableViewController(
+    title: "Static TableView", sections: [
+        Section(headerTitle: "Created by:", cells: [
+            StaticCell(text: "marcocapano", whenSelected: { (cell, vc) in
+                let detail = UIViewController()
+                detail.view.backgroundColor = .yellow
+                detail.title = cell.textLabel?.text
+                vc.navigationController?.pushViewController(detail, animated: true)
+            })
+        ]),
+        Section(headerTitle: "Some other cells:", footerTitle: "Nice footer", cells: [
+            StaticCell(text: "Cell number 1", whenSelected: { (cell, vc) in
+                let detail = UIViewController()
+                detail.view.backgroundColor = .green
+                detail.title = cell.textLabel?.text
+                vc.navigationController?.pushViewController(detail, animated: true)
+            }),
+            StaticCell(text: "Cell number 2", whenSelected: { (cell, vc) in
+                let detail = UIViewController()
+                detail.view.backgroundColor = .blue
+                detail.title = cell.textLabel?.text
+                vc.navigationController?.pushViewController(detail, animated: true)
+            })
+        ])
+    ])
 
 ```
 
 and here is the result:
 
-<img src="/screenshots/example.png" width="250">
+<img src="/screenshots/example.gif" width="250">
 
 ## Installation
 Just drag the StaticTableView.swift file into your project.
@@ -35,8 +44,7 @@ Just drag the StaticTableView.swift file into your project.
 - Creating multiple sections with a header.
 - Creating multiple cell for each section.
 - Configure your cells with the `configure` method.
+- React to cell selection.
 
 ## Future plans:
-- Adding didSelectCell support.
-- Find a better way to configure cells. I'm not sure i like cells calling "configure" and passing themselves as a parameter.
 - Adding convenience initializers for common types of cells.

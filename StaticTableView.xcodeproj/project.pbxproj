@@ -12,6 +12,10 @@
 		4CAC8C8A2180E460009B4C48 /* StaticTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAC8C7C2180E460009B4C48 /* StaticTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CAC8C942180E475009B4C48 /* StaticTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC8C932180E475009B4C48 /* StaticTableView.swift */; };
 		4CAC8C952180E475009B4C48 /* StaticTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC8C932180E475009B4C48 /* StaticTableView.swift */; };
+		4CAC8C98218106FA009B4C48 /* StaticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC8C97218106FA009B4C48 /* StaticCell.swift */; };
+		4CAC8C99218106FA009B4C48 /* StaticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC8C97218106FA009B4C48 /* StaticCell.swift */; };
+		4CAC8C9B21810731009B4C48 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC8C9A21810731009B4C48 /* Section.swift */; };
+		4CAC8C9C21810731009B4C48 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC8C9A21810731009B4C48 /* Section.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,8 @@
 		4CAC8C892180E460009B4C48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CAC8C932180E475009B4C48 /* StaticTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableView.swift; sourceTree = "<group>"; };
 		4CAC8C962180EC93009B4C48 /* Test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Test.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		4CAC8C97218106FA009B4C48 /* StaticCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCell.swift; sourceTree = "<group>"; };
+		4CAC8C9A21810731009B4C48 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,8 @@
 				4CAC8C7C2180E460009B4C48 /* StaticTableView.h */,
 				4CAC8C7D2180E460009B4C48 /* Info.plist */,
 				4CAC8C932180E475009B4C48 /* StaticTableView.swift */,
+				4CAC8C97218106FA009B4C48 /* StaticCell.swift */,
+				4CAC8C9A21810731009B4C48 /* Section.swift */,
 			);
 			path = StaticTableView;
 			sourceTree = "<group>";
@@ -201,7 +209,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CAC8C9B21810731009B4C48 /* Section.swift in Sources */,
 				4CAC8C942180E475009B4C48 /* StaticTableView.swift in Sources */,
+				4CAC8C98218106FA009B4C48 /* StaticCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +220,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CAC8C882180E460009B4C48 /* StaticTableViewTests.swift in Sources */,
+				4CAC8C9C21810731009B4C48 /* Section.swift in Sources */,
 				4CAC8C952180E475009B4C48 /* StaticTableView.swift in Sources */,
+				4CAC8C99218106FA009B4C48 /* StaticCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

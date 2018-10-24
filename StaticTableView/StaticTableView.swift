@@ -8,44 +8,7 @@
 
 import UIKit
 
-public typealias StaticCellSelectionBlock = (StaticCell, StaticTableViewController) -> ()
-public typealias StaticCellConfigurationBlock = (StaticCell) -> ()
-
-public class StaticCell: UITableViewCell {
-    public var didSelect: StaticCellSelectionBlock?
-    public var configure: StaticCellConfigurationBlock
-    
-    public init(style: UITableViewCell.CellStyle = .default, didSelect: StaticCellSelectionBlock? = nil, configure: @escaping StaticCellConfigurationBlock) {
-        self.didSelect = didSelect
-        self.configure = configure
-        super.init(style: style, reuseIdentifier: nil)
-    }
-    
-    public convenience init(text: String, accessoryView: UIView? = nil, whenSelected: StaticCellSelectionBlock? = nil) {
-        self.init(style: .default, didSelect: whenSelected) {
-            $0.textLabel?.text = text
-            $0.accessoryView = accessoryView
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-public class Section {
-    public var cells: [StaticCell]
-    public var headerTitle: String?
-    public var footerTitle: String?
-    
-    public init(headerTitle: String? = nil, footerTitle: String? = nil, cells: [StaticCell]) {
-        self.cells = cells
-        self.headerTitle = headerTitle
-        self.footerTitle = footerTitle
-    }
-}
-
+///A TableViewController that displays static cells.
 public class StaticTableViewController: UITableViewController {
     
     public var sections: [Section] {
@@ -85,12 +48,15 @@ public class StaticTableViewController: UITableViewController {
     }
     
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+        ///Configuring the cell as requested and displaying it.
         let cell = self.cell(for: indexPath)
         cell.configure(cell)
         return cell
     }
     
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        ///As a context, we pass the cell itself and the tableViewController (useful for navigation purposes)
         let cell = self.cell(for: indexPath)
         cell.didSelect?(cell,self)
     }

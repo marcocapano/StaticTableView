@@ -37,6 +37,6 @@ Just drag the StaticTableView.swift file into your project.
 - Configure your cells with the `configure` method.
 
 ## Future plans:
-- Adding section footer support.
 - Adding didSelectCell support.
+- Find a better way to configure cells. I'm not sure i like cells calling "configure" and passing themselves as a parameter.
 - Adding convenience initializers for common types of cells.

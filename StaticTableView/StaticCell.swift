@@ -21,7 +21,7 @@ public class StaticCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: nil)
     }
     
-    ///Initializes a simple UITableViewCell with a text label and an optional accessory view.
+    ///Initializes a simple StaticCell with a text label and an optional accessory view.
     public convenience init(text: String, accessoryView: UIView? = nil, whenSelected: StaticCellSelectionBlock? = nil) {
         self.init(style: .default, didSelect: whenSelected) {
             $0.textLabel?.text = text
@@ -29,7 +29,7 @@ public class StaticCell: UITableViewCell {
         }
     }
     
-    ///Initializes a simple UITableViewCell with a subtitle style.
+    ///Initializes a simple StaticCell with a subtitle style.
     public convenience init(title: String, subtitle: String, whenSelected: StaticCellSelectionBlock? = nil) {
         self.init(style: .subtitle, didSelect: whenSelected) {
             $0.textLabel?.text = title
@@ -37,11 +37,23 @@ public class StaticCell: UITableViewCell {
         }
     }
     
-    ///Initializes a simple UITableViewCell with a value1 style.
+    ///Initializes a StaticCell with a value1 style.
     public convenience init(leftText: String, rightText: String, whenSelected: StaticCellSelectionBlock? = nil) {
         self.init(style: .value1, didSelect: whenSelected) {
             $0.textLabel?.text = leftText
             $0.detailTextLabel?.text = rightText
+        }
+    }
+    
+    //Initializes a StaticCell that displays a text and a static UISwitch control.
+    public convenience init(text: String, switchOn: Bool, whenSelected: StaticCellSelectionBlock? = nil) {
+        self.init(style: .default, didSelect: whenSelected) {
+            $0.textLabel?.text = text
+            
+            let control = UISwitch()
+            control.isOn = switchOn
+            control.isUserInteractionEnabled = false
+            $0.accessoryView = control
         }
     }
     

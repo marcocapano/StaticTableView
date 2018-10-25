@@ -43,7 +43,7 @@ public class StaticTableViewController: UITableViewController {
         return sections[section].headerTitle
     }
     
-    public override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    override public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return sections[section].footerTitle
     }
     
@@ -53,6 +53,10 @@ public class StaticTableViewController: UITableViewController {
         let cell = self.cell(for: indexPath)
         cell.configure(cell)
         return cell
+    }
+    
+    public override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
     
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

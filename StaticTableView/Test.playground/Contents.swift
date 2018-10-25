@@ -14,7 +14,8 @@ let staticTableView = StaticTableViewController(
         ]),
         Section(headerTitle: "Some other cells:", footerTitle: "Nice footer", cells: [
             StaticCell(text: "Cell number 1"),
-            StaticCell(title: "User ID", subtitle: "4F152GS")
+            StaticCell(title: "User ID", subtitle: "4F152GS"),
+            StaticCell(leftText: "Address", rightText: "Via Roma, 9")
         ])
     ])
 

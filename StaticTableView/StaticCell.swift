@@ -37,6 +37,14 @@ public class StaticCell: UITableViewCell {
         }
     }
     
+    ///Initializes a simple UITableViewCell with a value1 style.
+    public convenience init(leftText: String, rightText: String, whenSelected: StaticCellSelectionBlock? = nil) {
+        self.init(style: .value1, didSelect: whenSelected) {
+            $0.textLabel?.text = leftText
+            $0.detailTextLabel?.text = rightText
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

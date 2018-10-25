@@ -37,6 +37,7 @@ Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files in
 - Creating multiple sections with a header.
 - Creating multiple cell for each section.
 - Configure your cells with the `configure` method.
+- Use already made cell styles.
 - React to cell selection.
 
 ## Future plans:

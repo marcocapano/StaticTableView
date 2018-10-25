@@ -29,6 +29,14 @@ public class StaticCell: UITableViewCell {
         }
     }
     
+    ///Initializes a simple UITableViewCell with a subtitle style.
+    public convenience init(title: String, subtitle: String, whenSelected: StaticCellSelectionBlock? = nil) {
+        self.init(style: .subtitle, didSelect: whenSelected) {
+            $0.textLabel?.text = title
+            $0.detailTextLabel?.text = subtitle
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

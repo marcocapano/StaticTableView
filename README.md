@@ -42,3 +42,4 @@ Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files in
 
 ## Future plans:
 - Adding convenience initializers for common types of cells.
+- Increase code coverage once the project goes after the prototyping stage.

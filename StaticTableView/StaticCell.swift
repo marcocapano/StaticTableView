@@ -29,6 +29,14 @@ public class StaticCell: UITableViewCell {
         }
     }
     
+    ///Initializes a simple StaticCell with a text label and an accessory type.
+    public convenience init(text: String, accessoryType: UITableViewCell.AccessoryType, whenSelected: StaticCellSelectionBlock? = nil) {
+        self.init(style: .default, didSelect: whenSelected) {
+            $0.textLabel?.text = text
+            $0.accessoryType = accessoryType
+        }
+    }
+    
     ///Initializes a simple StaticCell with a subtitle style.
     public convenience init(title: String, subtitle: String, whenSelected: StaticCellSelectionBlock? = nil) {
         self.init(style: .subtitle, didSelect: whenSelected) {

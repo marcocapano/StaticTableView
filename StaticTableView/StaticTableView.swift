@@ -20,7 +20,7 @@ public class StaticTableViewController: UITableViewController {
     public init(title: String = "", sections: [Section]) {
         self.sections = sections
         super.init(style: .grouped)
-        navigationItem.title = title
+        self.title = title
     }
     
     required init?(coder aDecoder: NSCoder) {

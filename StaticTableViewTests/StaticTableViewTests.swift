@@ -42,7 +42,6 @@ class StaticTableViewTests: XCTestCase {
     }
     
     func testDefaultCellInit() {
-        let style = UITableViewCell.CellStyle.value1
         let text = "Teeeext"
         let color = UIColor.green
 
@@ -50,6 +49,8 @@ class StaticTableViewTests: XCTestCase {
             $0.textLabel?.text = text
             $0.backgroundColor = color
         }
+        
+        cell.configure(cell)
         
         XCTAssertEqual(cell.textLabel?.text, text)
         XCTAssertEqual(cell.backgroundColor, color)
@@ -59,6 +60,8 @@ class StaticTableViewTests: XCTestCase {
         let text = "my text"
         let cell = StaticCell(text: text)
         
+        cell.configure(cell)
+
         XCTAssertEqual(text, cell.textLabel?.text)
     }
     
@@ -67,6 +70,8 @@ class StaticTableViewTests: XCTestCase {
         
         let cell = StaticCell(text: "some text", accessoryView: view)
         
+        cell.configure(cell)
+
         XCTAssertEqual(cell.accessoryView, view)
     }
 }

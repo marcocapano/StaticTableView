@@ -41,5 +41,6 @@ Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files in
 - React to cell selection.
 
 ## Future plans:
-- Adding convenience initializers for common types of cells.
+- Adding more convenience initializers for common types of cells.
 - Increase code coverage once the project goes after the prototyping stage.
+- Support custom cells

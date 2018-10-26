@@ -34,7 +34,7 @@ and here is the result:
 Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files into your project.
 
 ## Things you can do now
-- Creating multiple sections with a header.
+- Creating multiple sections with a header and a footer.
 - Creating multiple cell for each section.
 - Configure your cells with the `configure` method.
 - Use already made cell styles.
@@ -44,3 +44,4 @@ Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files in
 - Adding more convenience initializers for common types of cells.
 - Increase code coverage once the project goes after the prototyping stage.
 - Support custom cells
+- Make it easier and less verbose to execute simple tasks when a cell is selected(presenting a view controller, opening a link etc..)

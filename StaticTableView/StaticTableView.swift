@@ -55,10 +55,6 @@ public class StaticTableViewController: UITableViewController {
         return cell
     }
     
-    public override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ///As a context, we pass the cell itself and the tableViewController (useful for navigation purposes)
         let cell = self.cell(for: indexPath)

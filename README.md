@@ -28,7 +28,7 @@ let staticTableView = StaticTableViewController(
 
 and here is the result:
 
-<img src="/screenshots/example.png" width="250">
+<img src="/screenshots/example.gif" width="250">
 
 ## Installation
 Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files into your project.

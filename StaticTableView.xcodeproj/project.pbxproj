@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C183A2D21974D6E004C411A /* ConvenienceInitializersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C183A2C21974D6E004C411A /* ConvenienceInitializersTests.swift */; };
 		4CAC8C832180E460009B4C48 /* StaticTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAC8C792180E460009B4C48 /* StaticTableView.framework */; };
 		4CAC8C882180E460009B4C48 /* StaticTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC8C872180E460009B4C48 /* StaticTableViewTests.swift */; };
 		4CAC8C8A2180E460009B4C48 /* StaticTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAC8C7C2180E460009B4C48 /* StaticTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C183A2C21974D6E004C411A /* ConvenienceInitializersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceInitializersTests.swift; sourceTree = "<group>"; };
 		4CAC8C792180E460009B4C48 /* StaticTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StaticTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CAC8C7C2180E460009B4C48 /* StaticTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaticTableView.h; sourceTree = "<group>"; };
 		4CAC8C7D2180E460009B4C48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				4CAC8C872180E460009B4C48 /* StaticTableViewTests.swift */,
+				4C183A2C21974D6E004C411A /* ConvenienceInitializersTests.swift */,
 				4CAC8C892180E460009B4C48 /* Info.plist */,
 			);
 			path = StaticTableViewTests;
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C183A2D21974D6E004C411A /* ConvenienceInitializersTests.swift in Sources */,
 				4CAC8C882180E460009B4C48 /* StaticTableViewTests.swift in Sources */,
 				4CAC8C9C21810731009B4C48 /* Section.swift in Sources */,
 				4CAC8C952180E475009B4C48 /* StaticTableView.swift in Sources */,

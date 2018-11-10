@@ -11,14 +11,6 @@ import XCTest
 
 class StaticTableViewTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func testEmptyTableView() {
         let staticTableView = StaticTableViewController(sections: [])
         
@@ -32,7 +24,7 @@ class StaticTableViewTests: XCTestCase {
         XCTAssertEqual(title, staticTableView.title)
     }
     
-    func testSectionsHeaderAndFooters() {
+    func testSectionsHeaderAndFooterTitles() {
         let header = "HEADER"
         let footer = "FOOTER"
         
@@ -41,10 +33,12 @@ class StaticTableViewTests: XCTestCase {
         XCTAssertEqual(section.footerTitle, footer)
     }
     
-    func testDefaultCellInit() {
+    func testConfigurationBlock() {
         let text = "Teeeext"
         let color = UIColor.green
-
+        
+        
+        //When cell is configured
         let cell = StaticCell(style: .default) {
             $0.textLabel?.text = text
             $0.backgroundColor = color
@@ -52,26 +46,28 @@ class StaticTableViewTests: XCTestCase {
         
         cell.configure(cell)
         
+        //Test attributes
+        XCTAssertNotNil(cell.configure)
         XCTAssertEqual(cell.textLabel?.text, text)
         XCTAssertEqual(cell.backgroundColor, color)
     }
     
-    func testTextCell() {
-        let text = "my text"
-        let cell = StaticCell(text: text)
+    func testSelectionBlock() {
+        let selection = expectation(description: "Waiting for cell selection")
         
-        cell.configure(cell)
-
-        XCTAssertEqual(text, cell.textLabel?.text)
-    }
-    
-    func testAccessoryViewCell() {
-        let view = UIView()
+        let vc = StaticTableViewController(sections: [])
+        let cell = StaticCell(didSelect: { (_,_) in
+            selection.fulfill()
+        }, configure: { _ in
+            //
+        })
         
-        let cell = StaticCell(text: "some text", accessoryView: view)
+        XCTAssertNotNil(cell.didSelect)
+        cell.didSelect!(cell,vc)
         
-        cell.configure(cell)
-
-        XCTAssertEqual(cell.accessoryView, view)
+        waitForExpectations(timeout: 2) { (error) in
+            XCTAssertNil(error)
+        }
+        
     }
 }

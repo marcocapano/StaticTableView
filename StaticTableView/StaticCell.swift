@@ -15,10 +15,14 @@ public class StaticCell: UITableViewCell {
     public var didSelect: StaticCellSelectionBlock?
     public var configure: StaticCellConfigurationBlock
     
+    public static let systemColor = UIColor(red: 0, green: 122/255, blue: 1, alpha: 1.0)
+
+    
     public init(style: UITableViewCell.CellStyle = .default, didSelect: StaticCellSelectionBlock? = nil, configure: @escaping StaticCellConfigurationBlock) {
         self.didSelect = didSelect
         self.configure = configure
         super.init(style: style, reuseIdentifier: nil)
+        self.selectionStyle = .none
     }
     
     ///Initializes a simple StaticCell with a text label and an optional accessory view.
@@ -34,6 +38,14 @@ public class StaticCell: UITableViewCell {
         self.init(style: .default, didSelect: whenSelected) {
             $0.textLabel?.text = text
             $0.accessoryType = accessoryType
+        }
+    }
+    
+    ///Initializes a simple StaticCell with "button-style label".
+    public convenience init(buttonTitle: String, buttonColor: UIColor = systemColor, whenSelected: StaticCellSelectionBlock? = nil) {
+        self.init(style: .default, didSelect: whenSelected) {
+            $0.textLabel?.text = buttonTitle
+            $0.textLabel?.textColor = buttonColor
         }
     }
     

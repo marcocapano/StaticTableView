@@ -42,6 +42,6 @@ Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files in
 
 ## Future plans:
 - Adding more convenience initializers for common types of cells.
-- Increase code coverage once the project goes after the prototyping stage.
-- Support custom cells
+- Add StaticCell subclasses to make more complex cells.
+- Support a custom UIView as a section header/footer.
 - Make it easier and less verbose to execute simple tasks when a cell is selected(presenting a view controller, opening a link etc..)

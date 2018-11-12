@@ -30,6 +30,9 @@ and here is the result:
 
 <img src="/screenshots/example.gif" width="250">
 
+### WARNING:
+New kinds of cells have been added and the example & the gif need an update, have a look to Test.playground to try every kind of cell. 
+
 ## Installation
 Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files into your project.
 

@@ -13,14 +13,14 @@ let staticTableView = StaticTableViewController(
             })
         ]),
         Section(headerTitle: "Details:", footerTitle: "Nice footer", cells: [
-            StaticCell(text: "apple.com", whenSelected: { (_, vc) in
-                let url = URL(string: "www.apple.com")!
+            StaticCell(text: "Twitter @marcocapano1", whenSelected: { (_, vc) in
+                let url = URL(string: "www.twitter.com/marcocapano1")!
                 UIApplication.shared.open(url, options: [:])
             }),
-            StaticCell(title: "User ID", subtitle: "4F152GS"),
-            StaticCell(leftText: "Address", rightText: "Via Roma, 9"),
-            StaticCell(text: "Boolean", switchOn: true),
-            StaticCell(text: "Check", accessoryType: .checkmark),
+            StaticCell(title: "Birth date", subtitle: "03/11/1997"),
+            StaticCell(leftText: "Title", rightText: "iOS Developer"),
+            StaticCell(text: "Curious", switchOn: true),
+            StaticCell(text: "Cool README", accessoryType: .checkmark),
             StaticCell(buttonTitle: "Add contact"),
             StaticCell(buttonTitle: "Block user", buttonColor: .red)
         ])

@@ -59,7 +59,7 @@ public class StaticTableViewController: UITableViewController {
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ///As a context, we pass the cell itself and the tableViewController (useful for navigation purposes)
         let cell = self.cell(for: indexPath)
-        guard let handler = cell.selectionHandler else { return }
+        guard let handler = cell.whenSelected else { return }
         
         switch handler {
         case let .execute(block):

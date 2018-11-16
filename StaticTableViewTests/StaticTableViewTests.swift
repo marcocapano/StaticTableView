@@ -59,7 +59,7 @@ class StaticTableViewTests: XCTestCase {
         let selection = expectation(description: "Waiting for cell selection")
         
         //Given
-        let cell = StaticCell(selectionHandler: .execute({ (_, _) in
+        let cell = StaticCell(whenSelected: .execute({ (_, _) in
             selection.fulfill()
         }), configure: { _ in })
         
@@ -71,14 +71,14 @@ class StaticTableViewTests: XCTestCase {
         //Test
         waitForExpectations(timeout: 2) { (error) in
             XCTAssertNil(error)
-            XCTAssertNotNil(cell.selectionHandler)
+            XCTAssertNotNil(cell.whenSelected)
         }
     }
     
     func testSelectionPresentVC() {
         //Given
         let presentedVC = UIViewController()
-        let cell = StaticCell(selectionHandler: .present(presentedVC), configure: { _ in })
+        let cell = StaticCell(whenSelected: .present(presentedVC), configure: { _ in })
         let tableViewController = StaticTableViewController(sections: [Section(cells: [cell])])
         
         let window = UIWindow()
@@ -90,7 +90,7 @@ class StaticTableViewTests: XCTestCase {
         tableViewController.tableView(tableViewController.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
         
         //Test
-        XCTAssertNotNil(cell.selectionHandler)
+        XCTAssertNotNil(cell.whenSelected)
         XCTAssertEqual(tableViewController.presentedViewController, presentedVC)
         XCTAssertEqual(presentedVC.presentingViewController, tableViewController)
     }
@@ -98,7 +98,7 @@ class StaticTableViewTests: XCTestCase {
     func testSelectionPushVC() {
         //Given
         let pushedVC = UIViewController()
-        let cell = StaticCell(selectionHandler: .push(pushedVC), configure: { _ in })
+        let cell = StaticCell(whenSelected: .push(pushedVC), configure: { _ in })
         let tableViewController = StaticTableViewController(sections: [Section(cells: [cell])])
         let nav = UINavigationController(rootViewController: tableViewController)
         
@@ -111,7 +111,7 @@ class StaticTableViewTests: XCTestCase {
         tableViewController.tableView(tableViewController.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
         
         //Test
-        XCTAssertNotNil(cell.selectionHandler)
+        XCTAssertNotNil(cell.whenSelected)
         XCTAssertEqual(nav.viewControllers.count, 2)
         XCTAssertEqual(nav.visibleViewController, pushedVC)
     }
@@ -119,7 +119,7 @@ class StaticTableViewTests: XCTestCase {
     func testSelectionOpenURL() {
         //Given
         let url = URL(string: "https://www.apple.com")!
-        let cell = StaticCell(selectionHandler: .open(url), configure: { _ in })
+        let cell = StaticCell(whenSelected: .open(url), configure: { _ in })
         let tableViewController = StaticTableViewController(sections: [Section(cells: [cell])])
         
         let window = UIWindow()
@@ -131,7 +131,7 @@ class StaticTableViewTests: XCTestCase {
         tableViewController.tableView(tableViewController.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
         
         //Test
-        XCTAssertNotNil(cell.selectionHandler)
+        XCTAssertNotNil(cell.whenSelected)
         let visibleVC = tableViewController.presentedViewController as? SFSafariViewController
         XCTAssertNotNil(visibleVC)
     }

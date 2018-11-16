@@ -67,6 +67,7 @@ public class StaticTableViewController: UITableViewController {
             //passing the cell itself and the tableViewController (useful for navigation purposes)
             block(cell,self)
         case let .open(url):
+            //The URL should be opened using a SFSafariViewController or opening the link directly in Safari. Do not use a custom browser.
             let safari = SFSafariViewController(url: url)
             safari.dismissButtonStyle = .close
             present(safari, animated: true, completion: nil)

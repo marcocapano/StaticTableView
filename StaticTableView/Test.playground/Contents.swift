@@ -2,30 +2,56 @@ import UIKit
 import PlaygroundSupport
 import StaticTableView
 
-let profile = UIViewController()
-profile.view.backgroundColor = .yellow
-profile.title = "marcocapano"
+class ProfileViewController: UIViewController {
+    init(name: String) {
+        super.init(nibName: nil, bundle: nil)
+        title = name
+        view.backgroundColor = .white
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("who uses storyboard")
+    }
+}
 
-let add = UIViewController()
-add.title = "Add contact"
-add.view.backgroundColor = .blue
+class AddContactViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Modal presentation"
+        view.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            ])
+        
+        view.backgroundColor = .white
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        dismiss(animated: true, completion: nil)
+    }
+}
 
-let url = URL(string: "https://www.twitter.com/marcocapano1")!
+let profile = ProfileViewController(name: "marcocapano")
+let add = AddContactViewController()
+let twitterURL = URL(string: "https://www.twitter.com/marcocapano1")!
 
 let staticTableView = StaticTableViewController(
     title: "Static TableView", sections: [
         Section(headerTitle: "Created by:", cells: [
             StaticCell(text: "marcocapano", accessoryView: UIButton(type: .contactAdd), whenSelected: .push(profile))
-        ]),
+            ]),
         Section(headerTitle: "Details:", footerTitle: "Nice footer", cells: [
-            StaticCell(text: "Twitter @marcocapano1", whenSelected: .open(url)),
+            StaticCell(text: "Twitter @marcocapano1", whenSelected: .open(twitterURL)),
             StaticCell(title: "Birth date", subtitle: "03/11/1997"),
             StaticCell(leftText: "Title", rightText: "iOS Developer"),
             StaticCell(text: "Curious", switchOn: true),
             StaticCell(text: "Cool README", accessoryType: .checkmark),
             StaticCell(buttonTitle: "Add contact", whenSelected: .present(add)),
             StaticCell(buttonTitle: "Block user", buttonColor: .red)
-        ])
+            ])
     ])
 
 PlaygroundPage.current.liveView =  UINavigationController(rootViewController: staticTableView)

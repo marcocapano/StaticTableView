@@ -57,12 +57,14 @@ public class StaticTableViewController: UITableViewController {
     }
     
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ///As a context, we pass the cell itself and the tableViewController (useful for navigation purposes)
+        
         let cell = self.cell(for: indexPath)
         guard let handler = cell.whenSelected else { return }
         
         switch handler {
         case let .execute(block):
+            //as a context
+            //passing the cell itself and the tableViewController (useful for navigation purposes)
             block(cell,self)
         case let .open(url):
             let safari = SFSafariViewController(url: url)
@@ -71,7 +73,9 @@ public class StaticTableViewController: UITableViewController {
         case let .present(viewController):
             present(viewController, animated: true, completion: nil)
         case let .push(viewController):
-            navigationController!.pushViewController(viewController, animated: true)
+            //If the controller is embedded in a UINavigationController, push the passed ViewController, else trap.
+            assert(navigationController != nil, "Cannot push a UIViewController if there's no UINavigationController")
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
 }

@@ -42,7 +42,7 @@ Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files in
 - React to cell selection.
 
 ## Future plans:
+- Add more SelectionHandler cases for common use cases.
 - Adding more convenience initializers for common types of cells.
 - Add StaticCell subclasses to make more complex cells.
 - Support a custom UIView as a section header/footer.
-- Make it easier and less verbose to execute simple tasks when a cell is selected(presenting a view controller, opening a link etc..)

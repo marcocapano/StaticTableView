@@ -5,15 +5,15 @@ A simple and declarative way of creating a static TableViewController.
 Creating a TableViewController is just as easy as:
 
 ``` swift
-let profile = ProfileViewController()
+let profile = ProfileViewController(name: "marcocapano")
 let add = AddContactViewController()
-let twitterURL = URL(string: "https://www.twitter.com/marcocapano1"
+let twitterURL = URL(string: "https://www.twitter.com/marcocapano1")!
 
 let staticTableView = StaticTableViewController(
     title: "Static TableView", sections: [
         Section(headerTitle: "Created by:", cells: [
             StaticCell(text: "marcocapano", accessoryView: UIButton(type: .contactAdd), whenSelected: .push(profile))
-        ]),
+            ]),
         Section(headerTitle: "Details:", footerTitle: "Nice footer", cells: [
             StaticCell(text: "Twitter @marcocapano1", whenSelected: .open(twitterURL)),
             StaticCell(title: "Birth date", subtitle: "03/11/1997"),
@@ -22,7 +22,7 @@ let staticTableView = StaticTableViewController(
             StaticCell(text: "Cool README", accessoryType: .checkmark),
             StaticCell(buttonTitle: "Add contact", whenSelected: .present(add)),
             StaticCell(buttonTitle: "Block user", buttonColor: .red)
-        ])
+            ])
     ])
 
 ```

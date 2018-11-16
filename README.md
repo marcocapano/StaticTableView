@@ -34,19 +34,6 @@ and here is the result:
 ## Installation
 Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files into your project.
 
-## Things you can do now
-- Creating multiple sections with a header and a footer.
-- Creating multiple cell for each section.
-- Configure your cells with the `configure` method.
-- Use already made cell styles.
-- React to cell selection.
-
-## Future plans:
-- Add more SelectionHandler cases for common use cases.
-- Adding more convenience initializers for common types of cells.
-- Add StaticCell subclasses to make more complex cells.
-- Support a custom UIView as a section header/footer.
-
 # Creating cells
 You can create cells with **7 different styles**:
 
@@ -75,6 +62,19 @@ public enum SelectionHandler {
 }
 
 ```
+
+## Things you can do now
+- Creating multiple sections with a header and a footer.
+- Creating multiple cell for each section.
+- Configure your cells with the `configure` method.
+- Use already made cell styles.
+- React to cell selection.
+
+## Future plans:
+- Add more SelectionHandler cases for common use cases.
+- Adding more convenience initializers for common types of cells.
+- Add StaticCell subclasses to make more complex cells.
+- Support a custom UIView as a section header/footer.
 
 
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 ///A TableViewController that displays static cells.
 public class StaticTableViewController: UITableViewController {
@@ -64,7 +65,9 @@ public class StaticTableViewController: UITableViewController {
         case let .execute(block):
             block(cell,self)
         case let .open(url):
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            let safari = SFSafariViewController(url: url)
+            safari.dismissButtonStyle = .close
+            present(safari, animated: true, completion: nil)
         case let .present(viewController):
             present(viewController, animated: true, completion: nil)
         case let .push(viewController):

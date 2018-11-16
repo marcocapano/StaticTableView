@@ -8,6 +8,7 @@
 
 import UIKit
 
+///A StaticTableViewController section.
 public class Section {
     public var cells: [StaticCell]
     public var headerTitle: String?

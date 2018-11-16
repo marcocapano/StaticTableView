@@ -8,18 +8,25 @@
 
 import UIKit
 
+///A customizable native-looking cell that can react to selection.
 public class StaticCell: UITableViewCell {
     public typealias StaticCellSelectionBlock = (StaticCell, StaticTableViewController) -> ()
     public typealias StaticCellConfigurationBlock = (StaticCell) -> ()
     
     public enum SelectionHandler {
+        ///Executes the given block
         case execute(StaticCellSelectionBlock)
+        ///Opens the URL in a native SFSafariViewController
         case open(URL)
+        ///Presents a ViewController modally on top of the tableView.
         case present(UIViewController)
+        ///Pushes the given ViewController on the navigation stack.
         case push(UIViewController)
     }
     
+    ///The action to execute when the cell is selected.
     public var whenSelected: SelectionHandler?
+    ///A configuration block called every time a cell is displayed.
     public var configure: StaticCellConfigurationBlock
     
     public static let systemColor = UIColor(red: 0, green: 122/255, blue: 1, alpha: 1.0)

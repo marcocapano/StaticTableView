@@ -56,13 +56,12 @@ class StaticTableViewTests: XCTestCase {
         let selection = expectation(description: "Waiting for cell selection")
         
         let vc = StaticTableViewController(sections: [])
-        let cell = StaticCell(didSelect: { (_,_) in
-            selection.fulfill()
-        }, configure: { _ in
-            //
-        })
         
-        XCTAssertNotNil(cell.didSelect)
+        let cell = StaticCell(selectionHandler: StaticCell.SelectionHandler.execute({ (_, _) in
+            selection.fulfill()
+        }), configure: { _ in })
+        
+        XCTAssertNotNil(cell.selectionHandler)
         cell.didSelect!(cell,vc)
         
         waitForExpectations(timeout: 2) { (error) in

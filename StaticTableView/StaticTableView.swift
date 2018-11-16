@@ -58,6 +58,17 @@ public class StaticTableViewController: UITableViewController {
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ///As a context, we pass the cell itself and the tableViewController (useful for navigation purposes)
         let cell = self.cell(for: indexPath)
-        cell.didSelect?(cell,self)
+        guard let handler = cell.selectionHandler else { return }
+        
+        switch handler {
+        case let .execute(block):
+            block(cell,self)
+        case let .open(url):
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        case let .present(viewController):
+            present(viewController, animated: true, completion: nil)
+        case let .push(viewController):
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }

@@ -68,7 +68,7 @@ public class StaticTableViewController: UITableViewController {
         case let .present(viewController):
             present(viewController, animated: true, completion: nil)
         case let .push(viewController):
-            navigationController?.pushViewController(viewController, animated: true)
+            navigationController!.pushViewController(viewController, animated: true)
         }
     }
 }

@@ -55,18 +55,61 @@ class StaticTableViewTests: XCTestCase {
     func testSelectionBlock() {
         let selection = expectation(description: "Waiting for cell selection")
         
-        let vc = StaticTableViewController(sections: [])
-        
-        let cell = StaticCell(selectionHandler: StaticCell.SelectionHandler.execute({ (_, _) in
+        //Given
+        let cell = StaticCell(selectionHandler: .execute({ (_, _) in
             selection.fulfill()
         }), configure: { _ in })
         
-        XCTAssertNotNil(cell.selectionHandler)
-        cell.didSelect!(cell,vc)
+        let vc = StaticTableViewController(sections: [Section(cells: [cell])])
         
+        //When
+        vc.tableView(vc.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+        
+        //Test
         waitForExpectations(timeout: 2) { (error) in
             XCTAssertNil(error)
+            XCTAssertNotNil(cell.selectionHandler)
         }
+    }
+    
+    func testSelectionPresentVC() {
+        //Given
+        let presentedVC = UIViewController()
+        let cell = StaticCell(selectionHandler: .present(presentedVC), configure: { _ in })
+        let tableViewController = StaticTableViewController(sections: [Section(cells: [cell])])
         
+        let window = UIWindow()
+        window.rootViewController = tableViewController
+        window.addSubview(tableViewController.view)
+        RunLoop.current.run(until: Date())
+        
+        //When
+        tableViewController.tableView(tableViewController.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+        
+        //Test
+        XCTAssertNotNil(cell.selectionHandler)
+        XCTAssertEqual(tableViewController.presentedViewController, presentedVC)
+        XCTAssertEqual(presentedVC.presentingViewController, tableViewController)
+    }
+    
+    func testSelectionPushVC() {
+        //Given
+        let pushedVC = UIViewController()
+        let cell = StaticCell(selectionHandler: .push(pushedVC), configure: { _ in })
+        let tableViewController = StaticTableViewController(sections: [Section(cells: [cell])])
+        let nav = UINavigationController(rootViewController: tableViewController)
+        
+        let window = UIWindow()
+        window.rootViewController = nav
+        window.addSubview(nav.view)
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 2))
+        
+        //When
+        tableViewController.tableView(tableViewController.tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+        
+        //Test
+        XCTAssertNotNil(cell.selectionHandler)
+        XCTAssertEqual(nav.viewControllers.count, 2)
+        XCTAssertEqual(nav.visibleViewController, pushedVC)
     }
 }

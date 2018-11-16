@@ -46,3 +46,35 @@ Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files in
 - Adding more convenience initializers for common types of cells.
 - Add StaticCell subclasses to make more complex cells.
 - Support a custom UIView as a section header/footer.
+
+# Creating cells
+You can create cells with **7 different styles**:
+
+``` swift
+let textAndViewCell = StaticCell(text: "marcocapano", accessoryView: UIButton(type: .contactAdd))
+let textCell = StaticCell(text: "Twitter @marcocapano1")
+let titleAndSubtitleCell = StaticCell(title: "Birth date", subtitle: "03/11/1997")
+let leftAndRightTextCell = StaticCell(leftText: "Title", rightText: "iOS Developer")
+let textAndSwitchCell = StaticCell(text: "Curious", switchOn: true)
+let textAndAccessoryCell = StaticCell(text: "Cool README", accessoryType: .checkmark)
+let systemButtonStyleCell = StaticCell(buttonTitle: "Add contact", buttonColor: .red)
+
+```
+And in each of these initializers you can set a `SelectionHandler` of your choice between:
+
+``` swift
+public enum SelectionHandler {
+    //Executes the given block
+    case execute(StaticCellSelectionBlock)
+    //Opens the URL in a native SFSafariViewController
+    case open(URL)
+    //Presents a ViewController modally on top of the tableView.
+    case present(UIViewController)
+    //Pushes the given ViewController on the navigation stack.
+    case push(UIViewController)
+}
+
+```
+
+
+

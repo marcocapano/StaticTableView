@@ -30,11 +30,21 @@ class StaticTableViewTests: XCTestCase {
     }
     
     func testSectionsHeaderAndFooterTitles() {
+        //Given
         let header = "HEADER"
         let footer = "FOOTER"
-        
         let section = Section(headerTitle: header, footerTitle: footer, cells: [])
+        
+        //When
+        let staticTableView = StaticTableViewController(sections: [section])
+        
+        //Test
+        let displayedHeader = staticTableView.tableView(staticTableView.tableView, titleForHeaderInSection: 0)
         XCTAssertEqual(section.headerTitle, header)
+        XCTAssertEqual(displayedHeader, header)
+        
+        let displayedFooter = staticTableView.tableView(staticTableView.tableView, titleForFooterInSection: 0)
+        XCTAssertEqual(displayedFooter, footer)
         XCTAssertEqual(section.footerTitle, footer)
     }
     

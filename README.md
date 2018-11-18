@@ -47,7 +47,7 @@ let textAndAccessoryCell = StaticCell(text: "Cool README", accessoryType: .check
 let systemButtonStyleCell = StaticCell(buttonTitle: "Add contact", buttonColor: .red)
 
 ```
-And in each of these initializers you can set a `SelectionHandler` of your choice between:
+And in each of these initializers, using the `whenSelected` parameter you can set a `SelectionHandler` of your choice between:
 
 ``` swift
 public enum SelectionHandler {
@@ -60,6 +60,13 @@ public enum SelectionHandler {
     //Pushes the given ViewController on the navigation stack.
     case push(UIViewController)
 }
+
+```
+
+For example like this:
+
+``` swift
+let cell = StaticCell(text: "Click here", whenSelected: .open(URL))
 
 ```
 

@@ -57,28 +57,35 @@ public class StaticTableViewController: UITableViewController {
     }
     
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let cell = self.cell(for: indexPath)
         guard let handler = cell.whenSelected else { return }
         
-        DispatchQueue.main.async {
-            switch handler {
-            case let .execute(block):
-                //as a context
-                //passing the cell itself and the tableViewController (useful for navigation purposes)
-                block(cell,self)
-            case let .open(url):
-                //The URL should be opened using a SFSafariViewController or opening the link directly in Safari. Do not use a custom browser.
-                let safari = SFSafariViewController(url: url)
-                safari.dismissButtonStyle = .close
-                self.present(safari, animated: true, completion: nil)
-            case let .present(viewController):
-                self.present(viewController, animated: true, completion: nil)
-            case let .push(viewController):
-                //If the controller is embedded in a UINavigationController, push the passed ViewController, else trap.
-                assert(self.navigationController != nil, "Cannot push a UIViewController if there's no UINavigationController")
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
+        switch handler {
+        case let .execute(block):
+            //as a context
+            //passing the cell itself and the tableViewController (useful for navigation purposes)
+            block(cell,self)
+            
+        case let .open(url):
+            //The URL should be opened using a SFSafariViewController or opening the link directly in Safari. Do not use a custom browser.
+            let safari = SFSafariViewController(url: url)
+            safari.dismissButtonStyle = .close
+            self.present(safari, animated: true, completion: nil)
+            
+        case let .present(viewController):
+            self.present(viewController, animated: true, completion: nil)
+            
+            //Hack to solve bug that makes presenting a controller inside this method slow when
+            //the cell's selectionStyle is set to SelectionStyle.none .
+            //Dispatching an empty block seems to do the trick, see: https://openradar.appspot.com/19563577
+            //Do not put the presentation code inside the dispatched block, it will cause the synchronous tests to fail.
+            DispatchQueue.main.async(execute: {})
+            
+        case let .push(viewController):
+            //If the controller is embedded in a UINavigationController, push the passed ViewController, else trap.
+            assert(self.navigationController != nil, "Cannot push a UIViewController if there's no UINavigationController")
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
+
     }
 }

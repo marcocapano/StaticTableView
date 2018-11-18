@@ -15,8 +15,11 @@ class StaticTableViewTests: XCTestCase {
     func testEmptyTableView() {
         //Given
         let staticTableView = StaticTableViewController(sections: [])
+        
         //Test
         XCTAssertEqual(staticTableView.sections.count, 0)
+        let numOfSections = staticTableView.numberOfSections(in: staticTableView.tableView)
+        XCTAssertEqual(staticTableView.sections.count, numOfSections)
     }
     
     func testTitle() {
@@ -33,6 +36,30 @@ class StaticTableViewTests: XCTestCase {
         let section = Section(headerTitle: header, footerTitle: footer, cells: [])
         XCTAssertEqual(section.headerTitle, header)
         XCTAssertEqual(section.footerTitle, footer)
+    }
+    
+    func testSectionsCount() {
+        //Given
+        let sections = [Section(cells: []) , Section(cells: [])]
+        
+        //When
+        let staticTableView = StaticTableViewController(sections: sections)
+        
+        //Test
+        let numOfSections = staticTableView.numberOfSections(in: staticTableView.tableView)
+        XCTAssertEqual(numOfSections, sections.count)
+    }
+    
+    func testCellsCount() {
+        //Given
+        let cells = Array<StaticCell>(repeating: StaticCell(text: "cell"), count: 10)
+        
+        //When
+        let staticTableView = StaticTableViewController(sections: [Section(cells: cells)])
+        
+        //Test
+        let numOfCells = staticTableView.tableView(staticTableView.tableView, numberOfRowsInSection: 0)
+        XCTAssertEqual(numOfCells, cells.count)
     }
     
     func testConfigurationBlock() {

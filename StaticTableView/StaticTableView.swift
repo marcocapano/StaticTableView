@@ -61,22 +61,24 @@ public class StaticTableViewController: UITableViewController {
         let cell = self.cell(for: indexPath)
         guard let handler = cell.whenSelected else { return }
         
-        switch handler {
-        case let .execute(block):
-            //as a context
-            //passing the cell itself and the tableViewController (useful for navigation purposes)
-            block(cell,self)
-        case let .open(url):
-            //The URL should be opened using a SFSafariViewController or opening the link directly in Safari. Do not use a custom browser.
-            let safari = SFSafariViewController(url: url)
-            safari.dismissButtonStyle = .close
-            present(safari, animated: true, completion: nil)
-        case let .present(viewController):
-            present(viewController, animated: true, completion: nil)
-        case let .push(viewController):
-            //If the controller is embedded in a UINavigationController, push the passed ViewController, else trap.
-            assert(navigationController != nil, "Cannot push a UIViewController if there's no UINavigationController")
-            navigationController?.pushViewController(viewController, animated: true)
+        DispatchQueue.main.async {
+            switch handler {
+            case let .execute(block):
+                //as a context
+                //passing the cell itself and the tableViewController (useful for navigation purposes)
+                block(cell,self)
+            case let .open(url):
+                //The URL should be opened using a SFSafariViewController or opening the link directly in Safari. Do not use a custom browser.
+                let safari = SFSafariViewController(url: url)
+                safari.dismissButtonStyle = .close
+                self.present(safari, animated: true, completion: nil)
+            case let .present(viewController):
+                self.present(viewController, animated: true, completion: nil)
+            case let .push(viewController):
+                //If the controller is embedded in a UINavigationController, push the passed ViewController, else trap.
+                assert(self.navigationController != nil, "Cannot push a UIViewController if there's no UINavigationController")
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
         }
     }
 }

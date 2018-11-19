@@ -50,7 +50,7 @@ let staticTableView = StaticTableViewController(
             StaticCell(text: "Curious", switchOn: true),
             StaticCell(text: "Cool README", accessoryType: .checkmark),
             StaticCell(buttonTitle: "Add contact", whenSelected: .present(add)),
-            StaticCell(buttonTitle: "Block user", buttonColor: .red)
+            StaticCell(buttonTitle: "Block user", buttonColor: .red, alignment: .center)
             ])
     ])
 

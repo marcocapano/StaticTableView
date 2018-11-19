@@ -10,7 +10,7 @@ import XCTest
 
 class ConvenienceInitializersTests: XCTestCase {
 
-    func test_Text_AccessoryView() {
+    func testTextAccessoryView() {
         let text = "my text"
         let view = UIView()
         
@@ -21,7 +21,7 @@ class ConvenienceInitializersTests: XCTestCase {
         XCTAssertEqual(view, cell.accessoryView)
     }
     
-    func test_Text_AccessoryType() {
+    func testTextAccessoryType() {
         let text = "some text"
         let accessoryType = UITableViewCell.AccessoryType.detailButton
         
@@ -32,7 +32,7 @@ class ConvenienceInitializersTests: XCTestCase {
         XCTAssertEqual(cell.accessoryType, accessoryType)
     }
     
-    func test_buttonTitle_buttonColor() {
+    func testButtonStyleWithTitleAndButtonColor() {
         let title = "title"
         let color = UIColor.green
         
@@ -41,9 +41,23 @@ class ConvenienceInitializersTests: XCTestCase {
         
         XCTAssertEqual(cell.textLabel?.text, title)
         XCTAssertEqual(cell.textLabel?.textColor, color)
+        XCTAssertEqual(cell.textLabel?.textAlignment, NSTextAlignment.natural)
     }
     
-    func test_title_subtitle() {
+    func testButtonStyleWithAlignment() {
+        let title = "title"
+        let color = UIColor.green
+        let alignment = NSTextAlignment.center
+        
+        let cell = StaticCell(buttonTitle: title, buttonColor: color, alignment: alignment)
+        cell.configure(cell)
+        
+        XCTAssertEqual(cell.textLabel?.text, title)
+        XCTAssertEqual(cell.textLabel?.textColor, color)
+        XCTAssertEqual(cell.textLabel?.textAlignment, alignment)
+    }
+    
+    func testTitleAndSubtitle() {
         let title = "A title"
         let subtitle = "Subtitle"
         
@@ -54,7 +68,7 @@ class ConvenienceInitializersTests: XCTestCase {
         XCTAssertEqual(cell.detailTextLabel?.text, subtitle)
     }
     
-    func test_left_right() {
+    func testLeftAndRightStyle() {
         let left = "left"
         let right = "right"
         
@@ -65,7 +79,7 @@ class ConvenienceInitializersTests: XCTestCase {
         XCTAssertEqual(cell.detailTextLabel?.text, right)
     }
     
-    func test_text_bool() {
+    func testTextAndSwitchStyle() {
         let bool1 = true
         let bool2 = false
         let text = "string"

@@ -56,10 +56,11 @@ public class StaticCell: UITableViewCell {
     }
     
     ///Initializes a simple StaticCell with "button-style label".
-    public convenience init(buttonTitle: String, buttonColor: UIColor = systemColor, whenSelected: SelectionHandler? = nil) {
+    public convenience init(buttonTitle: String, buttonColor: UIColor = systemColor, alignment: NSTextAlignment = .natural, whenSelected: SelectionHandler? = nil) {
         self.init(style: .default, whenSelected: whenSelected) {
             $0.textLabel?.text = buttonTitle
             $0.textLabel?.textColor = buttonColor
+            $0.textLabel?.textAlignment = alignment
         }
     }
     

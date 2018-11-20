@@ -31,7 +31,7 @@ and here is the result:
 
 <img src="/screenshots/example.gif" width="250">
 
-## Installation
+# Installation
 Just drag the StaticTableView.swift, Section.swift and StaticCell.swift files into your project.
 
 # Creating cells
@@ -47,7 +47,9 @@ let textAndAccessoryCell = StaticCell(text: "Cool README", accessoryType: .check
 let systemButtonStyleCell = StaticCell(buttonTitle: "Add contact", buttonColor: .red)
 
 ```
-And in each of these initializers, using the `whenSelected` parameter you can set a `SelectionHandler` of your choice between:
+
+# Reacting to cell selection
+In every cell initializer, using the `whenSelected` parameter, you can set a `SelectionHandler` of your choice between:
 
 ``` swift
 public enum SelectionHandler {

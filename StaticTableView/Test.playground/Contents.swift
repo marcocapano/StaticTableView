@@ -50,9 +50,12 @@ let staticTableView = StaticTableViewController(
             StaticCell(text: "Curious", switchOn: true),
             StaticCell(text: "Cool README", accessoryType: .checkmark),
             StaticCell(buttonTitle: "Add contact", whenSelected: .present(add)),
-            StaticCell(buttonTitle: "Block user", buttonColor: .red, alignment: .center)
+            StaticCell(buttonTitle: "Block user", buttonColor: .red, alignment: .center),
             ])
     ])
 
 PlaygroundPage.current.liveView =  UINavigationController(rootViewController: staticTableView)
 
+staticTableView.view.tintColor = .yellow
+
+staticTableView.sections.forEach({$0.cells.forEach({$0.tintColor = .yellow})})

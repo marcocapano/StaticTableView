@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 ///A TableViewController that displays static cells.
-public class StaticTableViewController: UITableViewController {
+public final class StaticTableViewController: UITableViewController {
     
     public var sections: [Section] {
         didSet {

@@ -56,10 +56,11 @@ public class StaticCell: UITableViewCell {
     }
     
     ///Initializes a simple StaticCell with "button-style label".
-    public convenience init(buttonTitle: String, buttonColor: UIColor = systemColor, whenSelected: SelectionHandler? = nil) {
+    public convenience init(buttonTitle: String, buttonColor: UIColor? = nil, alignment: NSTextAlignment = .natural, whenSelected: SelectionHandler? = nil) {
         self.init(style: .default, whenSelected: whenSelected) {
             $0.textLabel?.text = buttonTitle
-            $0.textLabel?.textColor = buttonColor
+            $0.textLabel?.textColor = buttonColor ?? $0.tintColor
+            $0.textLabel?.textAlignment = alignment
         }
     }
     
@@ -80,16 +81,35 @@ public class StaticCell: UITableViewCell {
     }
     
     //Initializes a StaticCell that displays a text and a static UISwitch control.
-    public convenience init(text: String, switchOn: Bool, whenSelected: SelectionHandler? = nil) {
+    public convenience init(text: String, switchOn: Bool, switchOnColor: UIColor? = nil, whenSelected: SelectionHandler? = nil) {
         self.init(style: .default, whenSelected: whenSelected) {
             $0.textLabel?.text = text
             
             let control = UISwitch()
             control.isOn = switchOn
+            control.onTintColor = switchOnColor ?? $0.tintColor
             control.isUserInteractionEnabled = false
             $0.accessoryView = control
         }
     }
+    
+//    public convenience init(minimumValue: Float, maximumValue: Float, sliderValue: Float, whenSelected: SelectionHandler? = nil) {
+//        let slider = UISlider()
+//
+//        self.init(style: .default, whenSelected: whenSelected) {
+//            slider.minimumValue = minimumValue
+//            slider.maximumValue = maximumValue
+//            slider.setValue(sliderValue, animated: false)
+//
+//            $0.contentView.addSubview(slider)
+//            slider.translatesAutoresizingMaskIntoConstraints = false
+//            NSLayoutConstraint.activate([
+//                slider.centerXAnchor.constraint(equalTo: $0.contentView.centerXAnchor),
+//                slider.centerYAnchor.constraint(equalTo: $0.contentView.centerYAnchor),
+//                slider.widthAnchor.constraint(equalTo: $0.contentView.widthAnchor, multiplier: 0.8)
+//            ])
+//        }
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

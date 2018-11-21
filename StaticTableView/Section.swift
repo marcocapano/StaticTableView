@@ -9,7 +9,7 @@
 import UIKit
 
 ///A StaticTableViewController section.
-public class Section {
+public final class Section {
     public var cells: [StaticCell]
     public var headerTitle: String?
     public var footerTitle: String?

@@ -40,17 +40,19 @@ public class StaticCell: UITableViewCell {
     }
     
     ///Initializes a simple StaticCell with a text label and an optional accessory view.
-    public convenience init(text: String, accessoryView: UIView? = nil, whenSelected: SelectionHandler? = nil) {
+    public convenience init(text: String, textColor: UIColor? = nil, accessoryView: UIView? = nil, whenSelected: SelectionHandler? = nil) {
         self.init(style: .default, whenSelected: whenSelected) {
             $0.textLabel?.text = text
+            $0.textLabel?.textColor = textColor ?? $0.tintColor
             $0.accessoryView = accessoryView
         }
     }
     
     ///Initializes a simple StaticCell with a text label and an accessory type.
-    public convenience init(text: String, accessoryType: UITableViewCell.AccessoryType, whenSelected: SelectionHandler? = nil) {
+    public convenience init(text: String, textColor: UIColor? = nil, accessoryType: UITableViewCell.AccessoryType, whenSelected: SelectionHandler? = nil) {
         self.init(style: .default, whenSelected: whenSelected) {
             $0.textLabel?.text = text
+            $0.textLabel?.textColor = textColor ?? $0.tintColor
             $0.accessoryType = accessoryType
         }
     }

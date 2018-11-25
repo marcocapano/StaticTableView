@@ -53,6 +53,20 @@ class ConvenienceInitializersTests: XCTestCase {
         XCTAssertEqual(cell.textLabel?.textAlignment, NSTextAlignment.natural)
     }
     
+    func testButtonStyleWithDefaultColor() {
+        //Given
+        let title = "title"
+        
+        //When
+        let cell = StaticCell(buttonTitle: title)
+        cell.tintColor = .green
+        cell.configure(cell)
+        
+        //Test
+        XCTAssertEqual(cell.textLabel?.text, title)
+        XCTAssertEqual(cell.textLabel?.textColor, .green)
+    }
+    
     func testButtonStyleWithAlignment() {
         //Given
         let title = "title"

@@ -95,23 +95,25 @@ public class StaticCell: UITableViewCell {
         }
     }
     
-//    public convenience init(minimumValue: Float, maximumValue: Float, sliderValue: Float, whenSelected: SelectionHandler? = nil) {
-//        let slider = UISlider()
-//
-//        self.init(style: .default, whenSelected: whenSelected) {
-//            slider.minimumValue = minimumValue
-//            slider.maximumValue = maximumValue
-//            slider.setValue(sliderValue, animated: false)
-//
-//            $0.contentView.addSubview(slider)
-//            slider.translatesAutoresizingMaskIntoConstraints = false
-//            NSLayoutConstraint.activate([
-//                slider.centerXAnchor.constraint(equalTo: $0.contentView.centerXAnchor),
-//                slider.centerYAnchor.constraint(equalTo: $0.contentView.centerYAnchor),
-//                slider.widthAnchor.constraint(equalTo: $0.contentView.widthAnchor, multiplier: 0.8)
-//            ])
-//        }
-//    }
+    public convenience init(minimumValue: Float, maximumValue: Float, sliderValue: Float) {
+        let slider = UISlider()
+        slider.minimumValue = minimumValue
+        slider.maximumValue = maximumValue
+        slider.setValue(sliderValue, animated: false)
+
+        self.init(style: .default) {
+            guard !slider.isDescendant(of: $0.contentView) else { return }
+
+            $0.contentView.addSubview(slider)
+            slider.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                slider.centerXAnchor.constraint(equalTo: $0.contentView.centerXAnchor),
+                slider.centerYAnchor.constraint(equalTo: $0.contentView.centerYAnchor),
+                slider.leadingAnchor.constraint(equalTo: $0.contentView.leadingAnchor, constant: 8),
+                slider.trailingAnchor.constraint(equalTo: $0.contentView.trailingAnchor, constant: -8)
+            ])
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

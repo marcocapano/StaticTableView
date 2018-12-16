@@ -51,11 +51,13 @@ let staticTableView = StaticTableViewController(
             StaticCell(text: "Cool README", accessoryType: .checkmark),
             StaticCell(buttonTitle: "Add contact", whenSelected: .present(add)),
             StaticCell(buttonTitle: "Block user", buttonColor: .red, alignment: .center),
+            StaticCell(minimumValue: 0, maximumValue: 1, sliderValue: 0.5)
             ])
     ])
 
 PlaygroundPage.current.liveView =  UINavigationController(rootViewController: staticTableView)
 
 staticTableView.view.tintColor = .yellow
-
 staticTableView.sections.forEach({$0.cells.forEach({$0.tintColor = .yellow})})
+
+Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in staticTableView.tableView.reloadData() })
